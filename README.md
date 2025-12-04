@@ -1,10 +1,10 @@
 # Arquitetura de Sistemas Distribuídos - P2P com Balanceamento de Carga Dinâmico
 
-## 📋 Descrição do Projeto
+## Descrição do Projeto
 
 Sistema distribuído peer-to-peer (P2P) com balanceamento de carga dinâmico. A arquitetura permite múltiplos servidores (Masters) gerenciarem workers, com capacidade de compartilhamento dinâmico de recursos entre nós e redirecionamento automático de tarefas baseado em carga.
 
-## 🏗️ Estrutura da Arquitetura
+## Estrutura da Arquitetura
 
 ### Componentes Principais
 
@@ -25,7 +25,7 @@ Sistema distribuído peer-to-peer (P2P) com balanceamento de carga dinâmico. A 
    - Parâmetros de timing (heartbeat, load balancer)
    - Thresholds de balanceamento de carga
 
-## 🔌 Protocolo de Comunicação
+## Protocolo de Comunicação
 
 ### SERVIDOR ↔ WORKER
 
@@ -48,7 +48,7 @@ Sistema distribuído peer-to-peer (P2P) com balanceamento de carga dinâmico. A 
 | 4.2 | Server B → Server A | `{"TASK": "WORKER_RESPONSE", "STATUS": "NACK", "WORKERS": []}` | Resposta negativa (sem workers) |
 | 4.3 | Worker → Server A | `{"WORKER": "ALIVE", "WORKER_UUID": "..."}` | Worker emprestado conecta ao servidor saturado |
 
-## ⚙️ Configuração
+## Configuração
 
 ### Arquivo: `server/config.json`
 
@@ -93,7 +93,7 @@ Sistema distribuído peer-to-peer (P2P) com balanceamento de carga dinâmico. A 
 | **threshold_return_tasks** | Tamanho máximo de fila para retornar workers | 15 |
 | **min_workers_before_sharing** | Workers mínimos mantidos localmente | 1 |
 
-## 📂 Estrutura de Diretórios
+## Estrutura de Diretórios
 
 ```
 ARQUITETURA-SISTEMAS-DISTRIBUIDOS/
@@ -110,7 +110,7 @@ ARQUITETURA-SISTEMAS-DISTRIBUIDOS/
 └── Diagrama Sprint 5.png
 ```
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Python 3.7+
@@ -130,7 +130,7 @@ python worker.py
 
 Os workers se conectarão automaticamente ao Master configurado no `config.json`.
 
-## 📊 Balanceamento de Carga Dinâmico
+## Balanceamento de Carga Dinâmico
 
 O sistema monitora continuamente:
 
@@ -146,7 +146,7 @@ O sistema monitora continuamente:
 4. **Redirecionamento**: Workers são redirecionados para o Master sobrecarregado
 5. **Retorno**: Quando a fila cai abaixo de `threshold_return_tasks`, workers retornam ao servidor original
 
-## 📝 Logs
+## Logs
 
 Logs detalhados são salvos em `server/logs/`:
 
@@ -158,7 +158,7 @@ Formato dos logs:
 HH:MM:SS [NIVEL] mensagem
 ```
 
-## 🔄 Fluxo de Operação
+## Fluxo de Operação
 
 ```
 ┌─────────────────────────────────────┐
@@ -188,14 +188,14 @@ HH:MM:SS [NIVEL] mensagem
 └─────────────────────────────────────┘
 ```
 
-## 🔐 Recursos de Resiliência
+## Recursos de Resiliência
 
 - **Heartbeat com Retries**: Servidores tentam se reconectar em caso de falha
 - **Timeout de Heartbeat**: Detecta servidores offline
 - **Redirecionamento com Fallback**: Workers possuem lista de Masters alternativos
 - **Logging Detalhado**: Rastreamento de todas operações
 
-## 📊 Métricas Monitoradas
+## Métricas Monitoradas
 
 O sistema coleta:
 - Número de workers ativos
@@ -204,7 +204,7 @@ O sistema coleta:
 - Latência de comunicação entre peers
 - Status de heartbeats
 
-## 📌 Sprints
+## Sprints
 
 Documentação visual dos sprints está disponível nos diagramas inclusos no repositório:
 - **Sprint 1-5**: Evolução da arquitetura e implementação de features
